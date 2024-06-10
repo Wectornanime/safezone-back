@@ -12,8 +12,8 @@ const reportSchema = new mongoose.Schema({
     lowercase: true,
     trim: true,
     validate: {
-      Validator: (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v),
-      message: (props) => `${props.value} Esté não é m enderçeo valido de email!`,
+      validator: (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v),
+      message: (props) => `${props.value} não é um endereço válido de email!`,
     },
   },
   image: {
