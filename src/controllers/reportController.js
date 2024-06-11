@@ -15,13 +15,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }).single('image');
 
 exports.createReport = (req, res) => {
+  console.log(req.body);
   upload(req, res, async (err) => {
     if (err) {
       return res.status(400).json({ error: 'Error uploading image' });
     }
 
     try {
-      const { name, email } = req.body;
+      const { name, email, longitude, latitude, } = req.body;
 
       // validação dos dados
       if (!name || !email) {
@@ -36,6 +37,8 @@ exports.createReport = (req, res) => {
       const report = new Report({
         name,
         email,
+        longitude,
+        latitude,
       });
       await report.save();
 
