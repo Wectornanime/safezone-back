@@ -32,6 +32,10 @@ const reportSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  status: {
+    type: String,
+    default: "Em aberto"
+  }
 });
 
 module.exports = mongoose.model('Report', reportSchema);
