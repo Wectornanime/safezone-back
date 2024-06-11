@@ -78,3 +78,50 @@ exports.getReports = async (req, res) => {
   }
 };
 
+exports.updateReport = async (req, res) => {
+  const { id } = req.params;
+  const { name, email, longitude, latitude } = req.body;
+
+  // Validação dos dados
+  if (!name || !email) {
+    return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
+  }
+
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ error: 'Formato de email inválido' });
+  }
+
+  try {
+    const report = await Report.findByIdAndUpdate(
+      id,
+      { name, email, longitude, latitude },
+      { new: true } // Retornar o documento atualizado
+    );
+
+    if (!report) {
+      return res.status(404).json({ error: 'Relatório não encontrado' });
+    }
+
+    res.status(200).json({ message: 'Relatório atualizado com sucesso', report });
+  } catch (error) {
+    res.status(500).json({ error: 'Um erro ocorreu ao atualizar o relatório' });
+    console.log(error);
+  }
+};
+
+exports.deleteReport = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const report = await Report.findByIdAndDelete(id);
+
+    if (!report) {
+      return res.status(404).json({ error: 'Relatório não encontrado' });
+    }
+
+    res.status(200).json({ message: 'Relatório deletado com sucesso' });
+  } catch (error) {
+    res.status(500).json({ error: 'Um erro ocorreu ao deletar o relatório' });
+    console.log(error);
+  }
+};
