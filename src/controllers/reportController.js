@@ -1,5 +1,5 @@
 const Report = require('../models/Report');
-const validator = require('Validator');
+const validator = require('validator');
 const multer = require('multer');
 const nodemailer = require('nodemailer');
 
@@ -24,7 +24,7 @@ exports.createReport = (req, res) => {
       const { name, email } = req.body;
 
       // validação dos dados
-      if (!name || !email || !req.file) {
+      if (!name || !email) {
         return res.status(400).json({ error: 'All fields are required' });
       }
 
@@ -36,7 +36,6 @@ exports.createReport = (req, res) => {
       const report = new Report({
         name,
         email,
-        image: req.file.path,
       });
       await report.save();
 
@@ -56,11 +55,12 @@ exports.createReport = (req, res) => {
         text: `Um novo reporte foi realizado por ${name}.`,
       };
 
-      await transporter.sendMail(mailOptions);
+      // await transporter.sendMail(mailOptions);
 
       res.status(201).json({ message: 'Ocorrencia registrada com sucesso' });
     } catch (error) {
       res.status(500).json({ error: 'Um erro foi encontrado ao registrar a ocorrencia' });
+      console.log(error);
     }
   });
 };
