@@ -4,7 +4,7 @@ const reportController = require('../controllers/reportController');
 
 router.post('/report', reportController.createReport);
 router.get('/report', reportController.getReports);
-router.put('/reports/:id', reportController.updateReport);
-router.delete('/reports/:id', reportController.deleteReport);
+router.put('/report/:id', reportController.updateReport);
+router.delete('/report/:id', reportController.deleteReport);
 
 module.exports = router;
