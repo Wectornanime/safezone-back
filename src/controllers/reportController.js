@@ -67,3 +67,14 @@ exports.createReport = (req, res) => {
     }
   });
 };
+
+exports.getReports = async (req, res) => {
+  try {
+    const reports = await Report.find();
+    res.status(200).json(reports);
+  } catch (error) {
+    res.status(500).json({ error: 'Um erro ocorreu ao buscar os relatórios' });
+    console.log(error);
+  }
+};
+
