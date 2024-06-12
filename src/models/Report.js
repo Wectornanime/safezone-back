@@ -12,18 +12,30 @@ const reportSchema = new mongoose.Schema({
     lowercase: true,
     trim: true,
     validate: {
-      Validator: (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v),
-      message: (props) => `${props.value} Esté não é m enderçeo valido de email!`,
+      validator: (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v),
+      message: (props) => `${props.value} não é um endereço válido de email!`,
     },
+  },
+  longitude: {
+    type: String,
+    required: true,
+  },
+  latitude: {
+    type: String,
+    required: true,
   },
   image: {
     type: String,
-    required: true,
+    required: false,
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  status: {
+    type: String,
+    default: "Em aberto"
+  }
 });
 
 module.exports = mongoose.model('Report', reportSchema);
