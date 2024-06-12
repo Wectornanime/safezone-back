@@ -16,6 +16,10 @@ const reportSchema = new mongoose.Schema({
       message: (props) => `${props.value} não é um endereço válido de email!`,
     },
   },
+  message: {
+    type: String,
+    required: true,
+  },
   longitude: {
     type: String,
     required: true,
