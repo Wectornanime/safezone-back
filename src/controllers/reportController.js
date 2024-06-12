@@ -81,7 +81,7 @@ exports.getReports = async (req, res) => {
 
 exports.updateReport = async (req, res) => {
   const { id } = req.params;
-  const { name, email, longitude, latitude } = req.body;
+  const { name, message, email, longitude, latitude, status } = req.body;
 
   // Validação dos dados
   if (!name || !email) {
@@ -95,7 +95,7 @@ exports.updateReport = async (req, res) => {
   try {
     const report = await Report.findByIdAndUpdate(
       id,
-      { name, email, longitude, latitude },
+      { name, message, email, longitude, latitude, status },
       { new: true } // Retornar o documento atualizado
     );
 
