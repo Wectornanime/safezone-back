@@ -22,7 +22,7 @@ exports.createReport = (req, res) => {
     }
 
     try {
-      const { name, email, longitude, latitude, } = req.body;
+      const { name, message, email, longitude, latitude, } = req.body;
 
       // validação dos dados
       if (!name || !email) {
@@ -36,6 +36,7 @@ exports.createReport = (req, res) => {
       // criar um report novo
       const report = new Report({
         name,
+        message,
         email,
         longitude,
         latitude,
