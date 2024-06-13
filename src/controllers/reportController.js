@@ -40,6 +40,7 @@ exports.createReport = (req, res) => {
         email,
         longitude,
         latitude,
+        imageUrl: req.file ? req.file.path : null,
       });
       await report.save();
 
