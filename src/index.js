@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -17,7 +19,7 @@ app.use(cors());
 const port = process.env.PORT || 3000;
 
 // Conectar ao banco de dados MongoDB
-mongoose.connect('mongodb://root:root@localhost:27017/', {
+mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
