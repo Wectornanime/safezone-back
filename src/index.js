@@ -3,6 +3,14 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const UserRoutes = require('./routes/userRouter');
 const ReportRoutes = require('./routes/reportRoutes');
+const fs = require('fs');
+const path = require('path');
+
+const uploadDir = path.join(__dirname, '..', 'uploads');
+// Verificar se o diretório existe, senão criar
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 const app = express();
 app.use(cors());
