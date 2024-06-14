@@ -22,6 +22,9 @@ mongoose.connect('mongodb://root:root@localhost:27017/', {
   useUnifiedTopology: true,
 });
 
+// Servir arquivos estáticos do diretório 'uploads'
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
 // Middleware para parsear o corpo da requisição
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

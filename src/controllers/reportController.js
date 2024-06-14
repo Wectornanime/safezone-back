@@ -72,8 +72,24 @@ exports.createReport = (req, res) => {
 
 exports.getReports = async (req, res) => {
   try {
-    const reports = await Report.find();
-    res.status(200).json(reports);
+    const reports = await Report.find().select('-__v'); // Excluir o campo __v do resultado
+
+    // Mapear cada relatório para adicionar a URL completa da imagem, se existir
+    const reportsWithImageUrls = reports.map(report => {
+      return {
+        _id: report._id,
+        name: report.name,
+        message: report.message,
+        email: report.email,
+        longitude: report.longitude,
+        latitude: report.latitude,
+        status: report.status,
+        imageUrl: report.imageUrl ? `${req.protocol}://${req.get('host')}/${report.imageUrl}` : null,
+        createdAt: report.createdAt,
+      };
+    });
+
+    res.status(200).json(reportsWithImageUrls);
   } catch (error) {
     res.status(500).json({ error: 'Um erro ocorreu ao buscar os relatórios' });
     console.log(error);
