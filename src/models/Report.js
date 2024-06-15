@@ -39,7 +39,11 @@ const reportSchema = new mongoose.Schema({
   status: {
     type: String,
     default: "Em aberto"
-  }
+  },
+  imageUrl: {
+    type: String,
+    default: null,
+  },
 });
 
 module.exports = mongoose.model('Report', reportSchema);
