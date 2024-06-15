@@ -30,7 +30,7 @@
 ## Descrição do projeto 📝
 
 O SafeZone é uma solução para promover a segurança no âmbito empresarial.
-Este repositório diz respeiro à versão mobile do projeto, dependendo totalmente do backend.
+Este repositório diz respeiro à versão backend do projeto, dependendo totalmente do mobile.
 
 ## Funcionalidades 🛠️
 
