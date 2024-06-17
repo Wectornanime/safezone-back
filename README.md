@@ -11,6 +11,7 @@
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
   <img src="https://img.shields.io/github/contributors/wectornanime/safezone-back.svg?style=for-the-badge" />
   <img src="https://img.shields.io/github/license/wectornanime/safezone-back.svg?style=for-the-badge" />
+  <img src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUIDO&color=GREEN&style=for-the-badge" />
 </div>
 
 ### Tópicos
@@ -30,7 +31,7 @@
 ## Descrição do projeto 📝
 
 O SafeZone é uma solução para promover a segurança no âmbito empresarial.
-Este repositório diz respeiro à versão mobile do projeto, dependendo totalmente do backend.
+Este repositório diz respeiro à versão backend do projeto, dependendo totalmente do mobile.
 
 ## Funcionalidades 🛠️
 
